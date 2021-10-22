@@ -15,7 +15,7 @@ const BLACKLIST=[]
 const WHITELIST=[]
 ```
 
-For example, you will want to allow at least one language:
+For example, **you will want to allow at least one language**:
 
 ```js
 const WHITELIST=['English','Russian','Japanese']
@@ -37,4 +37,10 @@ The script only allows sensibly-short titles by default. If you want to allow lo
 
 ```js
 const MAXTITLE=9000
+```
+
+By default, the script will only allow titles that contain an initial uppercase letter and are not written entirely in uppercase or lowercase. To disable this behavior, replace the relevant line with the one below. **This feature does not currently support non-latin alphabets** so make sure to disable it if needed.
+
+```js
+const CHECKCASE=false
 ```
