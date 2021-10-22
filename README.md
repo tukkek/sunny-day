@@ -32,3 +32,9 @@ You can also filter based on formats and styles you are not interested in:
 ```js
 const BLACKLIST=['Backseating Allowed','Vtuber']
 ```
+
+The script only allows sensibly-short titles by default. If you want to allow longer titles, change this line to a higher value like so:
+
+```js
+const MAXTITLE=9000
+```
