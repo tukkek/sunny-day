@@ -8,26 +8,27 @@ Userscript that filters out Twitch channel listings by tags and more.
 
 ## Configuration 
 
-To keep this highly-customizable you need to edit (via Tampermonkey's dashboard) the line that says:
+To keep this highly-customizable, users need to edit (via Tampermonkey's dashboard) the following lines according to their preference:
 
 ```js
-const TAGS=[]
+const BLACKLIST=[]
+const WHITELIST=[]
 ```
 
-For example, if you want to remove foreign languages you don't speak, replace with:
+For example, you will want to allow at least one language:
 
 ```js
-const TAGS=['German','Polish','Russian']
+const WHITELIST=['English','Russian','Japanese']
 ```
 
-If you want to remove sexist or racist tags (those are just examples as there are hundreds of identity-related tags now):
+If you want to remove sexist or racist tags (those are just examples as there are hundreds of identity-related tags now and this project isn't interested in cataloguing all of them):
 
 ```js
-const TAGS=['Asexual','Asian','Bisexual','Black']
+const BLACKLIST=['Asexual','Asian','Bisexual','Black']
 ```
 
 You can also filter based on formats and styles you are not interested in:
 
 ```js
-const TAGS=['Backseating Allowed','Vtuber']
+const BLACKLIST=['Backseating Allowed','Vtuber']
 ```
