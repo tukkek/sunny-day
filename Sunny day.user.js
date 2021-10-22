@@ -8,15 +8,13 @@
 // @icon         https://www.google.com/s2/favicons?domain=twitch.tv
 // @grant        none
 // ==/UserScript==
-
-//sadly these need to be case-perfect and escaped with CSS syntax
 const BLACKLIST=[] //remove channels with these tags
 const WHITELIST=[] //remove channels without these tags
 const MAXTITLE=30 //maximum allowed stream title character count
 const REFRESH=3 //run filter every few seconds, use a higher period if this script slows down your browser
 
 function find(tags,channel){
-    for(let t of tags) if(channel.querySelector(`*[data-a-target=${t}]`))
+    for(let t of tags) if(channel.querySelector(`*[data-a-target="${CSS.escape(t)}" i]`))
         return true
     return false
 }
