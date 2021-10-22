@@ -23,15 +23,16 @@ function find(tags,channel){
     return false
 }
 
+function checkcase(letters,re){return letters.filter(l=>re.exec(l)).length<letters.length}
+
 function check(title){
     if(!title) return true
     title=title.textContent
     if(title.length>=MAXTITLE) return false
     if(CHECKCASE){
+        if(!UPPERCASE.exec(title[0])) return false
         let letters=Array.from(title).filter(l=>UPPERCASE.exec(l)||LOWERCASE.exec(l))
-        if(!UPPERCASE.exec(letters[0])) return false
-        if(letters.filter(l=>UPPERCASE.exec(l)).length==letters.length||
-           letters.filter(l=>LOWERCASE.exec(l)).length==letters.length) return false
+        if(!checkcase(letters,UPPERCASE)||!checkcase(letters,LOWERCASE)) return false
     }
     return true
 }
