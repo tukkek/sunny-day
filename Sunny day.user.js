@@ -9,12 +9,11 @@
 // @grant        none
 // ==/UserScript==
 
-//sadly these need to be case-perfect and escaped with CSS syntax if there's any punctuation or symbols in them
+//sadly these need to be case-perfect and escaped with CSS syntax
 const BLACKLIST=[] //remove channels with these tags
 const WHITELIST=[] //remove channels without these tags
-
-const REFRESH=3 //run filter every few seconds, raise if this slows down your browser
 const MAXTITLE=30 //maximum allowed stream title character count
+const REFRESH=3 //run filter every few seconds, use a higher period if this script slows down your browser
 
 function find(tags,channel){
     for(let t of tags) if(channel.querySelector(`*[data-a-target=${t}]`))
@@ -24,7 +23,8 @@ function find(tags,channel){
 
 function allow(channel){
     let title=channel.querySelector('*[data-a-target=preview-card-title-link]')
-    return title&&title.textContent.length>=MAXTITLE&&
+    if(!title) return true
+    return title.textContent.length<MAXTITLE&&
         find(WHITELIST,channel)&&!find(BLACKLIST,channel)
 }
 
