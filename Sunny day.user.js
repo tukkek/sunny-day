@@ -11,8 +11,8 @@
 const BLACKLIST=[] //remove channels with these tags
 const WHITELIST=[] //remove channels without at least onf of these tags
 const MAXTITLE=30 //maximum allowed stream title length
-const CHECKCASE=true //check for a first-letter uppercase and at least one lowercase letter in title
-const REFRESH=3 // run filter every few seconds, use a higher number if this script slows Twitch down
+const CHECKCASE=true //check first-letter uppercase and removes all-uppercase or all-lowercase title
+const REFRESH=3 //run filter every few seconds, use a higher number if this script slows Twitch down
 
 const UPPERCASE=new RegExp('[A-Z]')
 const LOWERCASE=new RegExp('[a-z]')
@@ -28,9 +28,10 @@ function check(title){
     title=title.textContent
     if(title.length>=MAXTITLE) return false
     if(CHECKCASE){
-        let cases=Array.from(title)
-        if(!UPPERCASE.exec(cases[0])) return false
-        if(!cases.find(c=>LOWERCASE.exec(c))) return false
+        let letters=Array.from(title).filter(l=>UPPERCASE.exec(l)||LOWERCASE.exec(l))
+        if(!UPPERCASE.exec(letters[0])) return false
+        if(letters.filter(l=>UPPERCASE.exec(l)).length==letters.length||
+           letters.filter(l=>LOWERCASE.exec(l)).length==letters.length) return false
     }
     return true
 }
