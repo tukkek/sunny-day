@@ -1,21 +1,23 @@
 # Sunny day
-Userscript that filters out Twitch channel listings by tags and more.
+Userscript that filters Twitch channel listings by tags and more.
 
-Information overload and content discoverability are two major issues that top sites like Twitch and YouTube fail miserably to manage. While software tools will never be as good as user-driven curation, they still can help (minimally or majorly) while the issues remain addressed by the websites themselves. From that perspective, seeminlgy insignificant best-practices can be identified and processed automatically in an attempt to help users who are constantly overwhelmed with unwieldely amounts of information to separate quality from low-effort content.
+Information overload and content discoverability are two major issues that top sites like Twitch and YouTube fail miserably to manage. While software tools will never be as good as user-driven curation, they still can help (minimally or majorly) while the issues remain unaddressed by the websites themselves. From that perspective, seemingly insignificant best-practices can be identified and processed automatically in an attempt to help users who are constantly overwhelmed with unwieldely amounts of information to separate quality from low-effort content.
 
 ## Installation
 
 1. Install Tampermonkey (or a similar userscript engine) for [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) or [Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en).
 2. Install the userscript from [this link](https://github.com/tukkek/sunny-day/raw/main/Sunny%20day.user.js) by clicking `Install`.
 
-## Configuration 
+## Configuration
+
+Users can configure the behavior of the filter as covered in these sub-sections by modifying the script through Tampermonkey's dashboard.
 
 ### Tags
 
 A channel needs at least one whitelisted tag to make it through the filter. Usually this will be a language:
 
 ```js
-const WHITELIST=['English','Russian','Japanese']
+const WHITELIST=['English','Spanish']
 ```
 
 Any black-listed tag will be filtered out from the directory results:
