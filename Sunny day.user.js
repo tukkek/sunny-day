@@ -39,7 +39,8 @@ function check(title){
 
 function allow(channel){
     return check(channel.querySelector('*[data-a-target=preview-card-title-link]'))&&
-        find(WHITELIST,channel)&&!find(BLACKLIST,channel)
+        (WHITELIST.length==0||find(WHITELIST,channel))&&
+        !find(BLACKLIST,channel)
 }
 
 function clear(){
