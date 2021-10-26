@@ -44,7 +44,8 @@ function allow(channel){
 }
 
 function clear(){
-    for(let c of document.querySelectorAll('*[data-target=directory-container]>*>*'))
+    var channels=Array.from(document.querySelectorAll('*[data-target=directory-container]>*>*'))
+    for(let c of channels.filter(c=>c.textContent))
         if(!allow(c)) c.remove()
 }
 
